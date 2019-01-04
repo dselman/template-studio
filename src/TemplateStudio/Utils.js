@@ -76,6 +76,7 @@ function parseSample(clause, text, log) {
   try {
     clause.parse(text);
     changes.data = JSON.stringify(clause.getData(), null, 2);
+    changes.templateAst = clause.getTemplate().getTemplateAst();
     changes.log = textLog(log, 'Parse successful!');
     changes.text = text;
   } catch (error) {

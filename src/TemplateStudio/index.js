@@ -52,7 +52,7 @@ import {
 
 /* Studio components */
 
-import GrammarInput from './inputs/GrammarInput';
+import RichTextEditor from './inputs/RichTextEditor';
 import JsonInput from './inputs/JsonInput';
 
 import ModelForm from './forms/ModelForm';
@@ -321,7 +321,9 @@ class TemplateStudio extends Component {
       state.status = 'changed';
       this.setState(state);
     }
-    this.setState(Utils.parseSample(clause, text, log));
+    const change = Utils.parseSample(clause, text, log);
+    console.log(`Template AST: ${JSON.stringify(change.templateAst, null, 4)}`);
+    this.setState(change);
   }
 
   handleLegalTabChange(e, { name }) {
@@ -702,8 +704,8 @@ class TemplateStudio extends Component {
         </Menu>
         { this.state.activeLegal === 'template' ?
           <Tab.Pane attached="bottom">
-            <GrammarInput
-              grammar={grammar}
+            <RichTextEditor
+              text={grammar}
               handleTextChange={this.handleGrammarChange}
             />
           </Tab.Pane> :
@@ -811,8 +813,8 @@ class TemplateStudio extends Component {
         </Menu>
         { this.state.activeMeta === 'readme' ?
           <Tab.Pane attached="bottom">
-            <GrammarInput
-              grammar={this.state.clause ? this.state.clause.getTemplate().getMetadata().getREADME() : 'null'}
+            <RichTextEditor
+              text={this.state.clause ? this.state.clause.getTemplate().getMetadata().getREADME() : 'null'}
               handleTextChange={this.handleREADMEChange}
             />
           </Tab.Pane> : this.state.activeMeta === 'package' ?

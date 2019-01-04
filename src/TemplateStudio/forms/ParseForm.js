@@ -15,7 +15,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import JsonInput from '../inputs/JsonInput';
-import SampleInput from '../inputs/SampleInput';
+import RichTextEditor from '../inputs/RichTextEditor';
 import { Form, Divider, Tab } from 'semantic-ui-react';
 
 class ParseForm extends Form {
@@ -37,9 +37,9 @@ class ParseForm extends Form {
     const { text, data } = this.props;
     return (
       <Tab.Pane>
-        <SampleInput
-          sample={text}
-          handleSampleChange={this.handleSampleChange}
+        <RichTextEditor
+          text={text}
+          handleTextChange={this.handleSampleChange}
         />
         <Divider hidden />
         <Form.Field>
