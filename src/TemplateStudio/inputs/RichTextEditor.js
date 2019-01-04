@@ -3,47 +3,6 @@ import React from 'react';
 import commonmark from 'commonmark';
 import PropTypes from 'prop-types';
 
-const exampleText = `
-# Contract
-This is a sample contract template. You can introduce variables, like \`[{variableA}]\` or even have lists:
-- add list items
-- like this
-
-\`if variableA > 10\`
-This is a conditional section.
-\`endif\`
-
-Even, loops:
-
-\`foreach var in variableA\`
-- This is \`var.name\`
-
-\`endfor\`
-
-## Clause
-
-The document can contain **bold**, ~~strike~~, _italic_ text or even [links](https://clause.io).
-
-Or numbered lists:
-1. Item one
-1. Item two
-
-### Sub-sub heading
-
-This is some code:
-
-\`define constant PI = 4.0 * atan(1.0)\`
-
-This is a quote:
-
-> Look before you leap!
-
----
-# Page Two
-
-Even page breaks are supported!
-`;
-
 const unescape = text => text.replace(/\\([\\`*{}[\]()#+\-.!_>])/g, '$1');
 
 /**
@@ -59,10 +18,6 @@ export default class RichTextEditor extends React.Component {
 
     this.setEditorRef = (element) => {
       this.editor = element;
-    };
-
-    this.state = {
-      value: exampleText,
     };
   }
 
