@@ -12,10 +12,15 @@
  * limitations under the License.
  */
 
-import React from 'react';
-import ReactDOM from 'react-dom';
+/* Libraries */
+import Plain from 'slate-plain-serializer';
 
-import TemplateStudio from './TemplateStudio';
+export default class SlateToMarkdownConverter {
+  constructor(options = {}) {
+    this.options = options;
+  }
 
-const wrapper = document.getElementById('root');
-if (wrapper) ReactDOM.render(<TemplateStudio />, wrapper);
+  convert(value) {
+    return Plain.serialize(value);
+  }
+}
