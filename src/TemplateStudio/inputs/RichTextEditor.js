@@ -58,11 +58,11 @@ class RichTextEditor extends React.Component {
     this.state.value = null;
     this.state.rect = null;
 
-    // try {
-    //  this.initialValue = this.markdownToSlateConverter.convert(this.props.text);
-    // } catch (err) {
-    this.initialValue = this.markdownToSlateConverter.convert(defaultValue);
-    // }
+    try {
+      this.initialValue = this.markdownToSlateConverter.convert(this.props.text);
+    } catch (err) {
+      this.initialValue = this.markdownToSlateConverter.convert(defaultValue);
+    }
   }
 
   /**
@@ -261,18 +261,13 @@ class RichTextEditor extends React.Component {
     const range = native.getRangeAt(0);
     const rect = range.getBoundingClientRect();
     this.updateRect(oldRect, rect);
-
-    // menu.style.opacity = 1;
-    // menu.style.top = `${rect.top + (window.pageYOffset - menu.offsetHeight)}px`;
-    // menu.style.left = `${rect.left + (window.pageXOffset - (menu.offsetWidth / 2)) + (rect.width / 2)}px`;
   }
 
   handleOnChange = ({ value }) => {
     this.setState({ value });
-    // console.log('handleOnChange');
-    console.log(JSON.stringify(value, null, 4));
-    // console.log(this.slateToMarkdownConverter.convert(value));
-    this.handleTextChange(this.slateToMarkdownConverter.convert(value));
+    const md = this.slateToMarkdownConverter.convert(value);
+    console.log(md);
+    this.handleTextChange(md);
   }
 
   /**

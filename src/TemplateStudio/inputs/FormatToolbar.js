@@ -170,7 +170,7 @@ class FormatToolbar extends React.Component {
 
     if (rect) {
       return (
-        <div style={{ opacity: 0.9, 'background-color': 'black', top: rect.top - 50, left: rect.left - 40, zIndex: 100, position: 'fixed' }}>
+        <div style={{ opacity: 0.9, backgroundColor: 'black', top: rect.top - 50, left: rect.left - 40, zIndex: 100, position: 'fixed' }}>
           { this.renderBlockButton('heading-one', 'h1')}
           { this.renderBlockButton('heading-two', 'h2')}
           { this.renderMarkButton('bold', 'format_bold')}

@@ -23,7 +23,7 @@ export default class MarkdownToSlateConverter {
   }
 
   dump() {
-    console.log(JSON.stringify(this.root, null, 4));
+    // console.log(JSON.stringify(this.root, null, 4));
   }
 
   convert(markdownText) {
@@ -40,10 +40,10 @@ export default class MarkdownToSlateConverter {
 
     while (event) {
       const type = event.node.type;
-      console.log(`Converting: ${type}`);
+      // console.log(`Converting: ${type}`);
 
       if (this[type]) {
-        console.log(event.node);
+        // console.log(event.node);
 
         this[type](event.node, event.entering);
         this.dump();
